@@ -54,10 +54,6 @@ class DebugToolbarMiddleware(MiddlewareMixin):
         if not show_toolbar(request):
             return
 
-        # Don't render the toolbar during AJAX requests.
-        if request.is_ajax():
-            return
-
         toolbar = DebugToolbar(request)
         self.__class__.debug_toolbars[threading.current_thread().ident] = toolbar
 
